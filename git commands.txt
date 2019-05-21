@@ -1,0 +1,209 @@
+A list of commonly used Git commands
+
+Git is a free, open source distributed version control system tool created byLinus Torvalds in 2005.
+
+In this blog, We are going to learn commands being used while you are working with Git.
+
+
+git config:
+Configure the author name:
+ git config –-global user.name “[author_name]” 
+ 
+Configure the author email
+ git config –-global user.email “[author_email address]”  
+ 
+View all your configuration details, use the command below:
+ git config - - list
+ 
+Create Repository:
+
+Create a new local repository:
+ git init [project-name/repo-name]
+
+Clone and download a repository:
+ git clone [url]
+ git clone username@host[url]
+ 
+Add one or more files to staging:
+ git add filename
+ git add file1 file2....filename
+ git add *
+ 
+Commit changes to head(but not to remote from staging area):
+ git commit -m "commit message"
+ git commit -a(commits all files which are not addedd to staging area but are changed)
+ 
+Push changes:
+Push changes to master:
+ git push origin master
+  
+Push certain branch to remote repository:
+ git push origin [branchname]
+
+Push all branches to remote repository:
+ git push --all origin 
+  
+Status:
+ List files changed and those still need to commit:
+ git status
+
+ 
+Connect to remote repository:
+ git remote add origin [server]
+
+List all currently configure remote repositories:
+ git remote -v
+ 
+ 
+Branches:
+
+Create branch and switch to it:
+ git checkout -b [branchname]
+
+Switch to a branch:
+ git checkout [branchname]
+
+List all branches:
+ git branch
+ 
+List all remote or local branches
+ git branch -a
+
+Delete a branch:
+ git branch -d [branchname]
+ 
+ 
+Pull updates:
+
+Pull and merge changes from remote repository:
+ git pull
+ 
+Pull changes from certain branch of remote repository:
+ git pull [branchname] [remote url/remote name]
+
+ 
+To merge a different branch to your active branch;
+ git merge [branchname]
+ 
+ 
+View changes:
+
+View all merge conflicts/View files which are not staged yet:
+ git diff
+
+view merge conflicts against base file:
+ git diff --base [filename]
+
+View different between the files in the staging area and the latest version present:
+ git diff --staged
+
+Difference against source and destination:
+ git diff [sourcebranch] [targetbranch]
+ 
+
+Remove files/directories from working index(staging area):
+ 
+Remove a file from working index(cached):
+ git rm --cached [filename]
+
+To delete a file(force):
+ git rm -f [filename]
+ 
+Remove a directory from working index(cached):
+ git rm-r --cached [directoryname]
+ 
+Delete an entire dicretory(force):
+ git rm -f -r [directoryname]
+ 
+Stash:
+Tempoarily stores all the modified tracked files:
+ git stash -u
+
+Restores most recent stash:
+ git stash pop
+ 
+List all stashed changesets:
+ git stash list
+ 
+Drop most recently stashed changeset:
+ git stash drop
+ 
+
+ 
+Tagging:
+
+Add tagging to certain commit:
+git tag 1.0.1 [commitid]
+
+Push all tags to remote repository:
+ git push --tags origin
+
+Logging:
+
+Show entire log:
+ git log
+
+Show git log with date parameters:
+ git log --[after/before/untill/since]=[date]
+ 
+Show git log of certain author:
+ git log --author=[authorname]
+ 
+Shows the last n commits made:
+ git log -n[number]
+ 
+Show history of file:
+ git log --follow [filename]
+ 
+Show overview:
+ git log --stat --summary
+ 
+Show a log of changes to the local repository’s HEAD:
+ git reflog
+ 
+Show metadata and contents changes of a commit:
+ git show [commitid]
+
+ 
+Searching:
+
+Search the working directory for something:
+ git grep [search_string]
+
+ 
+Reset:
+
+Resets the index and working tree. Any changes to tracked files in the working tree since <commit> are discarded :
+ git reset --hard
+
+Discards all history and goes back to the specified commit:
+ git reset –hard [commitid]
+
+Remove file from stage,but preserve changes locally:
+ git reset [filename]
+
+Undo all commits after the specified commit, but preserves them locally:
+ git reset [commitid]
+
+revert commit:
+ git revert [commitid]
+ 
+Others:
+ 
+Grabage collector:
+ git gc
+ 
+Removes objects that are no longer pointed to by any object in any reachable branch:
+ git prune
+
+Creates a tar or zip file including the contents of a single tree from your repository:
+ git archive --format=zip master^ README >[filename.zip]
+
+Integrity check of the Git file system, identifying corrupted objects:
+ git fsck
+ 
+See who changed what and when in my_file:
+ git blame [filename]
+ 
+Create alias:
+ alias gs='git status '
